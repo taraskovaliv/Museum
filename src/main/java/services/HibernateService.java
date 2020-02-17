@@ -1,5 +1,6 @@
 package services;
 
+import entity.Author;
 import entity.Material;
 import entity.Worker;
 import org.hibernate.SessionFactory;
@@ -18,6 +19,7 @@ public class HibernateService {
 
             configuration.addAnnotatedClass(Material.class);
             configuration.addAnnotatedClass(Worker.class);
+            configuration.addAnnotatedClass(Author.class);
 
             Properties properties = new Properties();
             properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
