@@ -1,6 +1,7 @@
 package services;
 
 import entity.Material;
+import entity.Worker;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -16,6 +17,7 @@ public class HibernateService {
             Configuration configuration = new Configuration();
 
             configuration.addAnnotatedClass(Material.class);
+            configuration.addAnnotatedClass(Worker.class);
 
             Properties properties = new Properties();
             properties.put("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
@@ -40,7 +42,7 @@ public class HibernateService {
         }
     }
 
-        public static SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             sessionFactory = buildSessionFactory();
         }
