@@ -17,10 +17,10 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", length = 50)
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "surname", length = 50)
     private String surname;
 
 }
