@@ -1,5 +1,6 @@
 import entity.Author;
 import entity.Material;
+import entity.Room;
 import entity.Worker;
 import entity.enams.Positions;
 import org.hibernate.Session;
@@ -48,6 +49,18 @@ public class TestHibernateService {
         System.out.println(author.toString());
         session.save(author);
         session.delete(author);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Test
+    public void testRoom() {
+        Session session = HibernateService.getSessionFactory().openSession();
+        session.beginTransaction();
+        Room room = new Room((long) 1, 305, 3);
+        System.out.println(room.toString());
+        session.save(room);
+        session.delete(room);
         session.getTransaction().commit();
         session.close();
     }
