@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -27,4 +29,8 @@ public class Worker {
 
     @Column(name = "surname", length = 50)
     private String surname;
+
+    @OneToMany(mappedBy = "worker", fetch = FetchType.LAZY)
+    private List<Excursion> excursions = new ArrayList<>();
+
 }
