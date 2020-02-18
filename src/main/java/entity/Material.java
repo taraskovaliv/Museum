@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,5 +21,8 @@ public class Material {
 
     @Column(unique = true, length = 50)
     private String name;
+
+    @OneToMany(mappedBy = "material", fetch = FetchType.LAZY)
+    private List<Exhibit> exhibits = new ArrayList<>();
 
 }
