@@ -25,7 +25,7 @@ public class Author {
     @Column(name = "surname", length = 50)
     private String surname;
 
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "authors")
     private List<Exhibit> exhibits = new ArrayList<>();
 
 }

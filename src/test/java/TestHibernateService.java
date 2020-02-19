@@ -76,7 +76,9 @@ public class TestHibernateService {
         Technique technique = getTechnique();
         List<Material> list = new ArrayList<>();
         list.add(material);
-        Exhibit exhibit = new Exhibit((long) 1, "Екпонат", list, author, room, technique);
+        List<Author> authors = new ArrayList<>();
+        authors.add(author);
+        Exhibit exhibit = new Exhibit((long) 1, "Екпонат", list, authors, room, technique);
         System.out.println(material.toString());
         System.out.println(technique.toString());
         System.out.println(author.toString());
