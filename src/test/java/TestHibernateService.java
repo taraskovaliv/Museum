@@ -73,20 +73,26 @@ public class TestHibernateService {
         Material material = getMaterial();
         Author author = getAuthor();
         Room room = getRoom();
+        Technique technique = getTechnique();
         List<Material> list = new ArrayList<>();
         list.add(material);
-        Exhibit exhibit = new Exhibit((long) 1, "Екпонат", list, author, room);
+        List<Author> authors = new ArrayList<>();
+        authors.add(author);
+        Exhibit exhibit = new Exhibit((long) 1, "Екпонат", list, authors, room, technique);
         System.out.println(material.toString());
+        System.out.println(technique.toString());
         System.out.println(author.toString());
         System.out.println(room.toString());
         System.out.println(exhibit.toString());
         session.save(material);
         session.save(author);
+        session.save(technique);
         session.save(room);
         session.save(exhibit);
         session.delete(exhibit);
         session.delete(material);
         session.delete(author);
+        session.delete(technique);
         session.delete(room);
         session.getTransaction().commit();
         session.close();
@@ -126,6 +132,10 @@ public class TestHibernateService {
 
     public static Material getMaterial() {
         return new Material((long) 1, "Carbon", new ArrayList<Exhibit>());
+    }
+
+    public static Technique getTechnique(){
+        return new Technique((long)1, "Gotic", new ArrayList<Exhibit>());
     }
 
 }

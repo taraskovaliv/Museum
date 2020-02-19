@@ -30,10 +30,20 @@ public class Exhibit {
     )
     private List<Material> materials;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Author author;
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "author_exhibit",
+            joinColumns = @JoinColumn(name = "exhibit_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id")
+    )
+    private List<Author> authors;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Room room;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Technique technique;
 
 }

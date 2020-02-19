@@ -8,24 +8,19 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "authors")
-public class Author {
-
+@Table(name = "techniques")
+public class Technique {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", length = 50)
+    @Column(unique = true, length = 20)
     private String name;
 
-    @Column(name = "surname", length = 50)
-    private String surname;
-
-    @ManyToMany(mappedBy = "authors")
+    @OneToMany(mappedBy = "technique")
     private List<Exhibit> exhibits = new ArrayList<>();
-
 }
